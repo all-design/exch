@@ -1,0 +1,176 @@
+{
+  "info": {
+    "naziv": "Menjačnica Panter",
+    "slogan": "Promena na bolje",
+    "logo": "/logo.png",
+    "licenca": {
+      "broj": "MEN-001-2024",
+      "izdavalac": "Narodna banka Srbije",
+      "link": "https://www.nbs.rs"
+    },
+    "social": {
+      "facebook": "https://www.facebook.com/menjacnicapanter",
+      "instagram": "https://www.instagram.com/menjacnicapanter"
+    },
+    "seo": {
+      "title": "Menjačnica Panter | Kursna Lista Beograd - Najpovoljniji Kurs",
+      "description": "Menjačnica Panter - ovlašćena menjačnica NBS sa najpovoljnijim kursevima u Beogradu."
+    }
+  },
+  "kontakt": {
+    "telefon": {
+      "glavni": "+381 11 234 4444",
+      "mobilni": "+381 63 273 603",
+      "whatsapp": "+381 63 273 603"
+    },
+    "email": "info@menjacnica-panter.co.rs",
+    "web": "https://menjacnica-panter.co.rs"
+  },
+  "radnoVreme": {
+    "ponPet": "08:00 - 20:00",
+    "subota": "09:00 - 15:00",
+    "nedelja": "Zatvoreno"
+  },
+  "lokacije": [
+    {
+      "id": 1,
+      "naziv": "PANTER I",
+      "adresa": "Bulevar Kralja Aleksandra 122",
+      "grad": "Beograd",
+      "opstina": "Vračar",
+      "lat": 44.8065,
+      "lng": 20.4661,
+      "telefon": "+381 11 234 4441",
+      "radnoVreme": {
+        "ponPet": "08:00 - 20:00",
+        "subota": "09:00 - 15:00",
+        "nedelja": "zatvoreno"
+      },
+      "usluge": ["menjacnica", "western-union", "ria", "placanje-racuna"]
+    },
+    {
+      "id": 2,
+      "naziv": "PANTER II",
+      "adresa": "Bulevar Kralja Aleksandra 356",
+      "grad": "Beograd",
+      "opstina": "Vračar",
+      "lat": 44.7985,
+      "lng": 20.4811,
+      "telefon": "+381 11 234 4442",
+      "radnoVreme": {
+        "ponPet": "08:00 - 20:00",
+        "subota": "09:00 - 15:00",
+        "nedelja": "zatvoreno"
+      },
+      "usluge": ["menjacnica", "western-union", "ria"]
+    },
+    {
+      "id": 3,
+      "naziv": "PANTER III",
+      "adresa": "Bulevar Kralja Aleksandra 24",
+      "grad": "Beograd",
+      "opstina": "Palilula",
+      "lat": 44.8101,
+      "lng": 20.4591,
+      "telefon": "+381 11 234 4443",
+      "radnoVreme": {
+        "ponPet": "08:00 - 20:00",
+        "subota": "09:00 - 15:00",
+        "nedelja": "zatvoreno"
+      },
+      "usluge": ["menjacnica", "western-union"]
+    },
+    {
+      "id": 4,
+      "naziv": "PANTER IV",
+      "adresa": "Zmaj Jovina 23",
+      "grad": "Beograd",
+      "opstina": "Stari Grad",
+      "lat": 44.8176,
+      "lng": 20.4569,
+      "telefon": "+381 11 234 4444",
+      "radnoVreme": {
+        "ponPet": "09:00 - 19:00",
+        "subota": "10:00 - 14:00",
+        "nedelja": "zatvoreno"
+      },
+      "usluge": ["menjacnica", "placanje-racuna"]
+    }
+  ],
+  "usluge": [
+    {
+      "id": "menjacnica",
+      "naziv": "Menjačnica",
+      "opis": "Kupovina i prodaja deviza po najpovoljnijim kursevima u gradu. Veliki izbor valuta.",
+      "ikona": "Globe",
+      "aktivan": true
+    },
+    {
+      "id": "western-union",
+      "naziv": "Western Union",
+      "opis": "Brz i siguran prenos novca širom sveta preko Western Union mreže.",
+      "ikona": "Send",
+      "aktivan": true
+    },
+    {
+      "id": "ria",
+      "naziv": "RIA Money Transfer",
+      "opis": "Prenos novca u više od 165 zemalja po povoljnim provizijama.",
+      "ikona": "Send",
+      "aktivan": true
+    },
+    {
+      "id": "placanje-racuna",
+      "naziv": "Plaćanje računa",
+      "opis": "Uplata računa za komunalije, telefon, internet i druge usluge na jednom mestu.",
+      "ikona": "Receipt",
+      "aktivan": true
+    },
+    {
+      "id": "investiciono-zlato",
+      "naziv": "Investiciono zlato",
+      "opis": "Prodaja i otkup investicionog zlata. Sigurna investicija za vaš kapital.",
+      "ikona": "TrendingUp",
+      "aktivan": true
+    }
+  ],
+  "recenzije": [
+    {
+      "id": 1,
+      "autor": "Marko Petrović",
+      "tekst": "Odličan kurs i ljubazno osoblje. Uvek tu da pomognu!",
+      "ocena": 5,
+      "datum": "2026-02-14"
+    },
+    {
+      "id": 2,
+      "autor": "Ana Jovanović",
+      "tekst": "Najbolji kurs u gradu! Brza usluga i bez redova.",
+      "ocena": 5,
+      "datum": "2026-02-11"
+    },
+    {
+      "id": 3,
+      "autor": "Nikola Đorđević",
+      "tekst": "Profesionalni i pouzdani. Godinama ih koristim!",
+      "ocena": 5,
+      "datum": "2026-02-09"
+    }
+  ],
+  "kursnaLista": {
+    "marzaKupovni": 0.5,
+    "marzaProdajni": 0.5,
+    "cacheMinuta": 5
+  },
+  "widgeti": {
+    "zlatoWidget": {
+      "aktivan": true,
+      "refId": "menjacnica-panter",
+      "tema": "dark"
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 Menjačnica Panter. Sva prava zadržana.",
+    "godinaOsnivanja": 2008
+  }
+}

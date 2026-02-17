@@ -1,0 +1,11 @@
+# Robots.txt za Menjačnicu Panter
+# Više informacija: https://dev2.cfd/demo/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://dev2.cfd/demo/sitemap.xml
+
+# Crawl-delay za kako bi se sačuvao bandwidth
+Crawl-delay: 1

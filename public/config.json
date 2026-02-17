@@ -1,0 +1,147 @@
+{
+  "osnovno": {
+    "naziv": "Menjačnica Panter",
+    "slogan": "Promena na bolje",
+    "licenca": "MEN-001-2024",
+    "godinaOsnivanja": 2008,
+    "godina": 2025
+  },
+  "logo": {
+    "tip": "slika",
+    "slikaUrl": "/logo.png",
+    "tekst": "PANTER",
+    "sirina": 180,
+    "visina": 60
+  },
+  "kontakt": {
+    "telefon": "+381 11 234 4444",
+    "email": "info@menjacnica-panter.rs",
+    "adresa": "Knez Mihailova 25, Beograd",
+    "grad": "Beograd",
+    "postanskiBroj": "11000",
+    "drzava": "Srbija",
+    "googleMapsUrl": "https://maps.google.com/?q=Knez+Mihailova+25+Beograd",
+    "geoSirina": 44.8203,
+    "geoDuzina": 20.4622
+  },
+  "radnoVreme": {
+    "ponPet": "08:00 - 20:00",
+    "subota": "09:00 - 15:00",
+    "nedelja": "Zatvoreno",
+    "ponPetOtvoreno": "08:00",
+    "ponPetZatvoreno": "20:00",
+    "subotaOtvoreno": "09:00",
+    "subotaZatvoreno": "15:00"
+  },
+  "kursevi": {
+    "marzaKupovni": 0,
+    "marzaProdajni": 0,
+    "valute": ["EUR", "USD", "CHF", "GBP", "HUF", "BAM"]
+  },
+  "seo": {
+    "title": "Menjačnica Panter | Najbolji kurs u Beogradu",
+    "titleTemplate": "%s | Menjačnica Panter",
+    "description": "Menjačnica Panter - Najpovoljniji kurs evra, dolara i drugih valuta u Beogradu. Brza i sigurna promena novca. Licencirana menjačnica sa 17 godina iskustva.",
+    "keywords": "menjačnica, kursna lista, promena novca, Beograd, evro, dolar, kurs, menjačnica Beograd, kurs evra, kurs dolara, najbolji kurs, menjačnica centar Beograd",
+    "author": "Menjačnica Panter",
+    "robots": "index, follow",
+    "canonical": "https://dev2.cfd/demo/",
+    "language": "sr-RS"
+  },
+  "openGraph": {
+    "title": "Menjačnica Panter | Najbolji kurs u Beogradu",
+    "description": "Najpovoljniji kurs evra, dolara i drugih valuta u Beogradu. Brza i sigurna promena novca.",
+    "image": "/og-image.png",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "siteName": "Menjačnica Panter",
+    "locale": "sr_RS",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Menjačnica Panter | Najbolji kurs u Beogradu",
+    "description": "Najpovoljniji kurs evra, dolara i drugih valuta u Beogradu.",
+    "image": "/og-image.png"
+  },
+  "geoSeo": {
+    "region": "RS",
+    "place": "Beograd",
+    "areaServed": ["Beograd", "Srbija", "Centralni Beograd", "Stari Grad"],
+    "serviceArea": {
+      "radius": "10 km",
+      "center": "Beograd, Srbija"
+    }
+  },
+  "structuredData": {
+    "businessType": "CurrencyExchangeService",
+    "priceRange": "$$",
+    "currenciesAccepted": ["EUR", "USD", "CHF", "GBP", "RSD"],
+    "paymentAccepted": "Cash",
+    "areaServed": "Beograd, Srbija"
+  },
+  "društveneMreže": {
+    "facebook": "https://facebook.com/menjacnicapanter",
+    "instagram": "https://instagram.com/menjacnicapanter",
+    "twitter": "",
+    "linkedin": ""
+  },
+  "recenzije": [
+    {
+      "ime": "Marko Petrović",
+      "tekst": "Odličan kurs i ljubazno osoblje. Preporučujem svima!",
+      "ocena": 5,
+      "datum": "2024-12-15"
+    },
+    {
+      "ime": "Ana Jovanović",
+      "tekst": "Najbolja menjačnica u gradu. Uvek tačni kursevi.",
+      "ocena": 5,
+      "datum": "2024-11-20"
+    },
+    {
+      "ime": "Stefan Nikolić",
+      "tekst": "Brza usluga, bez redova. Vrlo zadovoljan.",
+      "ocena": 5,
+      "datum": "2024-10-05"
+    }
+  ],
+  "usluge": [
+    {
+      "naslov": "Promena strane valute",
+      "opis": "Kupovina i prodaja svih glavnih svetskih valuta po povoljnim kursevima."
+    },
+    {
+      "naslov": "Provajder usluga plaćanja",
+      "opis": "Licencirani provajder za sigurne transakcije i plaćanja."
+    },
+    {
+      "naslov": "Izdavanje garancija",
+      "opis": "Bankarske garancije za različite potrebe."
+    }
+  ],
+  "goldWidget": {
+    "enabled": true,
+    "title": "Prati cenu zlata uživo"
+  },
+  "aeo": {
+    "pitanjaOdgovori": [
+      {
+        "pitanje": "Koji je radni radno vreme menjačnice Panter?",
+        "odgovor": "Radno vreme menjačnice Panter je od ponedeljka do petka 08:00-20:00, subotom 09:00-15:00, a nedeljom je zatvoreno."
+      },
+      {
+        "pitanje": "Gde se nalazi menjačnica Panter?",
+        "odgovor": "Menjačnica Panter se nalazi na adresi Knez Mihailova 25, Beograd, u samom centru grada."
+      },
+      {
+        "pitanje": "Koje valute možete zameniti u menjačnici Panter?",
+        "odgovor": "U menjačnici Panter možete zameniti evro (EUR), dolar (USD), švajcarski franak (CHF), britansku funtu (GBP) i druge glavne svetske valute."
+      },
+      {
+        "pitanje": "Da li je menjačnica Panter licencirana?",
+        "odgovor": "Da, menjačnica Panter je licencirana od strane Narodne banke Srbije pod brojem MEN-001-2024."
+      }
+    ]
+  }
+}
