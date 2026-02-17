@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { NextRequest, NextResponse } from 'next/server';
 
 interface CachedData {
   rates: Record<string, number>;
@@ -87,21 +87,17 @@ async function fetchOpenExchange(): Promise<CachedData | null> {
   }
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Cache-Control', 'no-store');
-  
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-  
+export async function GET(request: NextRequest) {
   const now = Date.now();
   
   // Return cached if valid
   if (cachedData && (now - lastFetchTime) < CACHE_DURATION) {
-    return res.status(200).json(cachedData);
+    return NextResponse.json(cachedData, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Cache-Control': 'no-store'
+      }
+    });
   }
   
   // Try NBS first
@@ -125,5 +121,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   cachedData = data;
   lastFetchTime = now;
   
-  return res.status(200).json(data);
+  return NextResponse.json(data, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control': 'no-store'
+    }
+  });
+}
+
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    }
+  });
 }
