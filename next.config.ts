@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // Ne koristimo static export za Vercel (da bi API radio)
+  // output: "export",
   trailingSlash: true,
   images: {
     unoptimized: true,
