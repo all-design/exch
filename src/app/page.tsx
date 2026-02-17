@@ -85,9 +85,7 @@ export default function HomePage() {
 
   // Učitaj konfiguraciju - BEZ KEŠIRANJA
   useEffect(() => {
-    // Koristi basePath ako je definisan
-    const basePath = process.env.NODE_ENV === 'production' ? '/demo' : '';
-    fetch(`${basePath}/config.json`, { 
+    fetch('/config.json', { 
       cache: 'no-store',
       headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
     })
