@@ -37,7 +37,7 @@
   "kursevi": {
     "marzaKupovni": 0,
     "marzaProdajni": 0,
-    "valute": ["EUR", "USD", "CHF", "GBP", "HUF", "BAM"]
+    "valute": ["EUR", "USD", "CHF", "GBP", "BAM"]
   },
   "seo": {
     "title": "Menjačnica Panter | Najbolji kurs u Beogradu",
