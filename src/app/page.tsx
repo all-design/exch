@@ -324,7 +324,7 @@ export default function HomePage() {
           <div className="flex justify-between items-center h-16 sm:h-20">
             <a href="#" className="flex items-center gap-3 group">
               {config.logo.tip === 'slika' ? (
-                <img src={config.logo.slikaUrl} alt="Logo" className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+                <img src={config.logo.slikaUrl} alt="Logo" className="h-20 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
               ) : (
                 <span className="text-2xl sm:text-3xl font-bold text-[#2d9cdb] transition-all duration-300 group-hover:text-[#5bb8e8] tracking-tight">{config.logo.tekst}</span>
               )}
@@ -652,7 +652,7 @@ export default function HomePage() {
       {/* FOOTER */}
       <footer className={`py-10 px-4 ${styles.bg} border-t ${styles.border}`}>
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
-          <span className="text-2xl font-bold text-[#2d9cdb] tracking-tight">{config.logo.tip === 'tekst' ? config.logo.tekst : <img src={config.logo.slikaUrl} alt="Logo" className="h-8 w-auto" />}</span>
+          <span className="text-2xl font-bold text-[#2d9cdb] tracking-tight">{config.logo.tip === 'tekst' ? config.logo.tekst : <img src={config.logo.slikaUrl} alt="Logo" className="h-16 w-auto" />}</span>
           <div className="text-center sm:text-right">
             <p className={`${styles.textMuted} text-sm`}>© {config.osnovno.godina} {config.osnovno.naziv}. Sva prava zadržana.</p>
             <p className={`${styles.textMuted} text-xs mt-1`}>Licenca NBS: {config.osnovno.licenca}</p>
