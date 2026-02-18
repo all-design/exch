@@ -9,6 +9,7 @@ interface Usluga { naslov: string; opis: string; }
 interface PitanjeOdgovor { pitanje: string; odgovor: string; }
 interface Config {
   osnovno: { naziv: string; slogan: string; licenca: string; godinaOsnivanja: number; godina: number; };
+  tema?: 'light' | 'dark';
   logo: { tip: 'slika' | 'tekst'; slikaUrl: string; tekst: string; sirina: number; visina: number; };
   kontakt: { telefon: string; email: string; adresa: string; grad: string; postanskiBroj: string; drzava: string; googleMapsUrl: string; geoSirina: number; geoDuzina: number; };
   radnoVreme: { ponPet: string; subota: string; nedelja: string; ponPetOtvoreno: string; ponPetZatvoreno: string; subotaOtvoreno: string; subotaZatvoreno: string; };
@@ -27,6 +28,7 @@ interface Config {
 // Default config - MORA da se ažurira i ovde!
 const defaultConfig: Config = {
   osnovno: { naziv: 'Menjačnica Panter', slogan: 'Promena na bolje', licenca: 'MEN-001-2024', godinaOsnivanja: 2008, godina: 2025 },
+  tema: 'dark',
   logo: { tip: 'tekst', slikaUrl: '/logo.png', tekst: 'PANTER', sirina: 180, visina: 60 },
   kontakt: { telefon: '+381 11 234 4444', email: 'info@menjacnica-panter.rs', adresa: 'Knez Mihailova 25, Beograd', grad: 'Beograd', postanskiBroj: '11000', drzava: 'Srbija', googleMapsUrl: 'https://maps.google.com/?q=Knez+Mihailova+25+Beograd', geoSirina: 44.8203, geoDuzina: 20.4622 },
   radnoVreme: { ponPet: '08:00 - 20:00', subota: '09:00 - 15:00', nedelja: 'Zatvoreno', ponPetOtvoreno: '08:00', ponPetZatvoreno: '20:00', subotaOtvoreno: '09:00', subotaZatvoreno: '15:00' },
@@ -45,14 +47,71 @@ const defaultConfig: Config = {
 
 interface RateData { currency: string; srednji: number; kupovni: number; prodajni: number; }
 
-const getCurrencyColor = (currency: string) => {
+// Theme styles helper
+const getThemeStyles = (theme: 'light' | 'dark' = 'dark') => {
+  const isLight = theme === 'light';
+  return {
+    // Backgrounds
+    bg: isLight ? 'bg-white' : 'bg-[#0a0a0f]',
+    bgSecondary: isLight ? 'bg-gray-50' : 'bg-[#0f0f15]',
+    bgCard: isLight ? 'bg-white' : 'bg-[#15151f]',
+    bgCardHover: isLight ? 'hover:bg-gray-50' : 'hover:bg-white/5',
+    // Text
+    text: isLight ? 'text-gray-900' : 'text-white',
+    textMuted: isLight ? 'text-gray-500' : 'text-gray-400',
+    textSecondary: isLight ? 'text-gray-600' : 'text-gray-500',
+    // Borders
+    border: isLight ? 'border-gray-200' : 'border-white/5',
+    borderHover: isLight ? 'hover:border-[#2d9cdb]' : 'hover:border-[#2d9cdb]/30',
+    // Accent
+    accent: '#2d9cdb',
+    // Navigation
+    navBg: isLight ? 'bg-white/80' : 'bg-[#0a0a0f]/80',
+    // Table
+    tableBorder: isLight ? 'border-gray-200' : 'border-white/10',
+    tableRowHover: isLight ? 'hover:bg-gray-50' : 'hover:bg-white/5',
+    // Input
+    inputBg: isLight ? 'bg-white' : 'bg-[#0a0a0f]',
+    inputBorder: isLight ? 'border-gray-300' : 'border-white/10',
+    // Gradient text
+    gradientFrom: isLight ? 'from-gray-900' : 'from-white',
+    gradientTo: isLight ? 'to-gray-500' : 'to-gray-400',
+  };
+};
+
+const getCurrencyColor = (currency: string, theme: 'light' | 'dark' = 'dark') => {
+  const isLight = theme === 'light';
   const colors: Record<string, { bg: string; text: string; border: string }> = {
-    EUR: { bg: 'bg-blue-500/20', text: 'text-blue-400', border: 'border-blue-500/30' },
-    USD: { bg: 'bg-green-500/20', text: 'text-green-400', border: 'border-green-500/30' },
-    CHF: { bg: 'bg-red-500/20', text: 'text-red-400', border: 'border-red-500/30' },
-    GBP: { bg: 'bg-purple-500/20', text: 'text-purple-400', border: 'border-purple-500/30' },
-    HUF: { bg: 'bg-orange-500/20', text: 'text-orange-400', border: 'border-orange-500/30' },
-    BAM: { bg: 'bg-cyan-500/20', text: 'text-cyan-400', border: 'border-cyan-500/30' },
+    EUR: { 
+      bg: isLight ? 'bg-blue-100' : 'bg-blue-500/20', 
+      text: isLight ? 'text-blue-600' : 'text-blue-400', 
+      border: isLight ? 'border-blue-200' : 'border-blue-500/30' 
+    },
+    USD: { 
+      bg: isLight ? 'bg-green-100' : 'bg-green-500/20', 
+      text: isLight ? 'text-green-600' : 'text-green-400', 
+      border: isLight ? 'border-green-200' : 'border-green-500/30' 
+    },
+    CHF: { 
+      bg: isLight ? 'bg-red-100' : 'bg-red-500/20', 
+      text: isLight ? 'text-red-600' : 'text-red-400', 
+      border: isLight ? 'border-red-200' : 'border-red-500/30' 
+    },
+    GBP: { 
+      bg: isLight ? 'bg-purple-100' : 'bg-purple-500/20', 
+      text: isLight ? 'text-purple-600' : 'text-purple-400', 
+      border: isLight ? 'border-purple-200' : 'border-purple-500/30' 
+    },
+    HUF: { 
+      bg: isLight ? 'bg-orange-100' : 'bg-orange-500/20', 
+      text: isLight ? 'text-orange-600' : 'text-orange-400', 
+      border: isLight ? 'border-orange-200' : 'border-orange-500/30' 
+    },
+    BAM: { 
+      bg: isLight ? 'bg-cyan-100' : 'bg-cyan-500/20', 
+      text: isLight ? 'text-cyan-600' : 'text-cyan-400', 
+      border: isLight ? 'border-cyan-200' : 'border-cyan-500/30' 
+    },
   };
   return colors[currency] || { bg: 'bg-[#2d9cdb]/20', text: 'text-[#2d9cdb]', border: 'border-[#2d9cdb]/30' };
 };
@@ -207,7 +266,7 @@ export default function HomePage() {
       const container = document.getElementById(containerId);
       if (!container || container.querySelector('iframe')) return;
       const iframe = document.createElement('iframe');
-      iframe.src = 'https://zlato.ai/widget/v4?theme=dark&ref=menjacnica';
+      iframe.src = `https://zlato.ai/widget/v4?theme=${config.tema || 'dark'}&ref=menjacnica`;
       iframe.style.cssText = 'border:0; width:100%; height:100%; min-height:360px;';
       iframe.loading = 'lazy';
       iframe.title = 'Zlato.ai - Cena zlata';
@@ -225,28 +284,32 @@ export default function HomePage() {
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % Math.ceil(rates.length / 4));
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + Math.ceil(rates.length / 4)) % Math.ceil(rates.length / 4));
 
+  const theme = config.tema || 'dark';
+  const styles = getThemeStyles(theme);
+  const isLight = theme === 'light';
+
   const RatesTable = () => (
     <table className="w-full">
       <thead>
-        <tr className="border-b border-white/10">
-          <th className="py-3 px-3 text-left text-gray-500 font-medium">Valuta</th>
-          <th className="py-3 px-3 text-right text-gray-500 font-medium">Kupovni</th>
-          <th className="py-3 px-3 text-right text-gray-500 font-medium">Prodajni</th>
+        <tr className={`border-b ${styles.tableBorder}`}>
+          <th className={`py-3 px-3 text-left ${styles.textSecondary} font-medium`}>Valuta</th>
+          <th className={`py-3 px-3 text-right ${styles.textSecondary} font-medium`}>Kupovni</th>
+          <th className={`py-3 px-3 text-right ${styles.textSecondary} font-medium`}>Prodajni</th>
         </tr>
       </thead>
       <tbody>
         {rates.map((rate) => {
-          const colors = getCurrencyColor(rate.currency);
+          const colors = getCurrencyColor(rate.currency, theme);
           return (
-            <tr key={rate.currency} className="border-b border-white/5 hover:bg-white/5 transition-all duration-300 group">
+            <tr key={rate.currency} className={`border-b ${styles.border} ${styles.tableRowHover} transition-all duration-300 group`}>
               <td className="py-3 px-3">
                 <div className="flex items-center gap-2">
                   <span className={`w-9 h-9 rounded-lg ${colors.bg} border ${colors.border} flex items-center justify-center font-bold ${colors.text} transition-all duration-300 group-hover:scale-110`}>{rate.currency.substring(0, 2)}</span>
                   <span className={`font-bold ${colors.text}`}>{rate.currency}</span>
                 </div>
               </td>
-              <td className="py-3 px-3 text-right font-mono text-emerald-400 font-semibold">{rate.kupovni.toFixed(2)}</td>
-              <td className="py-3 px-3 text-right font-mono text-rose-400 font-semibold">{rate.prodajni.toFixed(2)}</td>
+              <td className={`py-3 px-3 text-right font-mono ${isLight ? 'text-green-600' : 'text-emerald-400'} font-semibold`}>{rate.kupovni.toFixed(2)}</td>
+              <td className={`py-3 px-3 text-right font-mono ${isLight ? 'text-red-600' : 'text-rose-400'} font-semibold`}>{rate.prodajni.toFixed(2)}</td>
             </tr>
           );
         })}
@@ -262,9 +325,9 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
+    <div className={`min-h-screen ${styles.bg} ${styles.text} overflow-x-hidden`}>
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-md border-b border-white/5">
+      <nav className={`fixed top-0 left-0 right-0 z-50 ${styles.navBg} backdrop-blur-md border-b ${styles.border}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 sm:h-20">
             <a href="#" className="flex items-center gap-3 group">
@@ -276,15 +339,15 @@ export default function HomePage() {
             </a>
             <div className="hidden md:flex items-center gap-8">
               {['Kursevi', 'Kalkulator', 'Zlato', 'Kontakt'].map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`} className="relative text-gray-400 hover:text-white transition-colors duration-300 group">{item}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#2d9cdb] transition-all duration-300 group-hover:w-full"></span></a>
+                <a key={item} href={`#${item.toLowerCase()}`} className={`relative ${styles.textMuted} hover:text-[#2d9cdb] transition-colors duration-300 group`}>{item}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#2d9cdb] transition-all duration-300 group-hover:w-full"></span></a>
               ))}
             </div>
-            <button className="md:hidden p-2 text-gray-400 hover:text-white transition-colors" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>{mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}</button>
+            <button className={`md:hidden p-2 ${styles.textMuted} hover:text-[#2d9cdb] transition-colors`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>{mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}</button>
           </div>
           {mobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-white/5">
+            <div className={`md:hidden py-4 border-t ${styles.border}`}>
               {['Kursevi', 'Kalkulator', 'Zlato', 'Kontakt'].map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`} className="block py-3 text-gray-400 hover:text-white transition-all" onClick={() => setMobileMenuOpen(false)}>{item}</a>
+                <a key={item} href={`#${item.toLowerCase()}`} className={`block py-3 ${styles.textMuted} hover:text-[#2d9cdb] transition-all`} onClick={() => setMobileMenuOpen(false)}>{item}</a>
               ))}
             </div>
           )}
@@ -294,22 +357,22 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 relative min-h-screen flex items-center">
         <div className="absolute inset-0 bg-gradient-to-b from-[#2d9cdb]/5 via-transparent to-transparent"></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#2d9cdb]/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        {!isLight && <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#2d9cdb]/10 rounded-full blur-3xl animate-pulse"></div>}
+        {!isLight && <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>}
         
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#15151f] border border-white/10 mb-6 transition-all duration-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${styles.bgCard} border ${styles.border} mb-6 transition-all duration-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                 <span className={`w-2 h-2 rounded-full ${isOpen() ? 'bg-emerald-400 animate-pulse' : 'bg-red-400'}`}></span>
-                <span className="text-sm text-gray-400">{isOpen() ? 'Otvoreno sada' : 'Zatvoreno'}</span>
+                <span className={`text-sm ${styles.textMuted}`}>{isOpen() ? 'Otvoreno sada' : 'Zatvoreno'}</span>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 leading-tight">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2d9cdb] via-[#5bb8e8] to-[#2d9cdb] bg-300% animate-gradient">{animatedText}</span>
                 <span className="animate-blink">|</span>
               </h1>
               <p className={`text-xl sm:text-2xl text-[#2d9cdb] mb-6 transition-all duration-700 delay-200 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>{config.osnovno.slogan}</p>
-              <p className={`text-gray-400 text-lg mb-8 max-w-xl mx-auto lg:mx-0 transition-all duration-700 delay-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>Već {config.osnovno.godina - config.osnovno.godinaOsnivanja} godina nudimo najpovoljnije kurseve u {config.kontakt.grad}u. Licenca NBS: {config.osnovno.licenca}</p>
+              <p className={`${styles.textMuted} text-lg mb-8 max-w-xl mx-auto lg:mx-0 transition-all duration-700 delay-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>Već {config.osnovno.godina - config.osnovno.godinaOsnivanja} godina nudimo najpovoljnije kurseve u {config.kontakt.grad}u. Licenca NBS: {config.osnovno.licenca}</p>
               <div className={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start transition-all duration-700 delay-400 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                 <a href="#kalkulator" className="group relative px-8 py-4 bg-[#2d9cdb] rounded-lg font-semibold overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#2d9cdb]/25"><span className="relative z-10">Kalkulator</span></a>
                 <a href={config.kontakt.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="group px-8 py-4 border border-[#2d9cdb]/30 rounded-lg font-semibold transition-all duration-300 hover:border-[#2d9cdb] hover:bg-[#2d9cdb]/10"><MapPin className="inline mr-2 h-5 w-5" />Pronađi nas</a>
@@ -322,44 +385,44 @@ export default function HomePage() {
                 { icon: MapPin, label: 'Adresa', value: config.kontakt.adresa },
                 { icon: Star, label: 'Iskustvo', value: `Od ${config.osnovno.godinaOsnivanja}` }
               ].map((item, index) => (
-                <div key={index} className="group bg-[#15151f] rounded-xl p-6 border border-white/5 hover:border-[#2d9cdb]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2d9cdb]/10 cursor-pointer">
+                <div key={index} className={`group ${styles.bgCard} rounded-xl p-6 border ${styles.border} ${styles.borderHover} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2d9cdb]/10 cursor-pointer`}>
                   <item.icon className="h-8 w-8 text-[#2d9cdb] mb-3 transition-transform duration-300 group-hover:scale-110" />
-                  <p className="text-sm text-gray-500">{item.label}</p>
-                  {item.href ? <a href={item.href} className="font-semibold hover:text-[#2d9cdb] transition-colors">{item.value}</a> : <p className="font-semibold">{item.value}</p>}
+                  <p className={`text-sm ${styles.textSecondary}`}>{item.label}</p>
+                  {item.href ? <a href={item.href} className={`font-semibold hover:text-[#2d9cdb] transition-colors ${styles.text}`}>{item.value}</a> : <p className="font-semibold">{item.value}</p>}
                 </div>
               ))}
             </div>
           </div>
           <div className={`flex justify-center mt-12 transition-all duration-700 delay-700 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
-            <a href="#kalkulator" className="text-gray-500 hover:text-[#2d9cdb] transition-colors animate-bounce"><ChevronDown size={32} /></a>
+            <a href="#kalkulator" className={`${styles.textSecondary} hover:text-[#2d9cdb] transition-colors animate-bounce`}><ChevronDown size={32} /></a>
           </div>
         </div>
       </section>
 
       {/* CALCULATOR - FULL WIDTH */}
-      <section id="kalkulator" className="py-16 sm:py-20 px-4 bg-[#0f0f15]">
+      <section id="kalkulator" className={`py-16 sm:py-20 px-4 ${styles.bgSecondary}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4"><span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Kalkulator</span></h2>
-            <p className="text-gray-500">Izračunajte koliko ćete dobiti</p>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4"><span className={`text-transparent bg-clip-text bg-gradient-to-r ${styles.gradientFrom} ${styles.gradientTo}`}>Kalkulator</span></h2>
+            <p className={styles.textSecondary}>Izračunajte koliko ćete dobiti</p>
           </div>
           
-          <div className="w-full bg-[#15151f] rounded-2xl p-6 sm:p-8 border border-white/5">
+          <div className={`w-full ${styles.bgCard} rounded-2xl p-6 sm:p-8 border ${styles.border}`}>
             <div className="grid md:grid-cols-5 gap-4 items-end">
               <div className="md:col-span-2">
-                <label className="block text-sm text-gray-500 mb-2">Iznos</label>
-                <input type="number" value={calcAmount} onChange={(e) => setCalcAmount(e.target.value)} className="w-full px-4 py-4 bg-[#0a0a0f] border border-white/10 rounded-xl focus:border-[#2d9cdb] focus:outline-none text-2xl transition-all duration-300" placeholder="100" />
+                <label className={`block text-sm ${styles.textSecondary} mb-2`}>Iznos</label>
+                <input type="number" value={calcAmount} onChange={(e) => setCalcAmount(e.target.value)} className={`w-full px-4 py-4 ${styles.inputBg} border ${styles.inputBorder} rounded-xl focus:border-[#2d9cdb] focus:outline-none text-2xl transition-all duration-300 ${styles.text}`} placeholder="100" />
               </div>
               <div>
-                <label className="block text-sm text-gray-500 mb-2">Od</label>
-                <select value={calcFrom} onChange={(e) => setCalcFrom(e.target.value)} className="w-full px-4 py-4 bg-[#0a0a0f] border border-white/10 rounded-xl focus:border-[#2d9cdb] focus:outline-none transition-all text-lg">
+                <label className={`block text-sm ${styles.textSecondary} mb-2`}>Od</label>
+                <select value={calcFrom} onChange={(e) => setCalcFrom(e.target.value)} className={`w-full px-4 py-4 ${styles.inputBg} border ${styles.inputBorder} rounded-xl focus:border-[#2d9cdb] focus:outline-none transition-all text-lg ${styles.text}`}>
                   <option value="RSD">RSD</option>
                   {rates.map(r => <option key={r.currency} value={r.currency}>{r.currency}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-sm text-gray-500 mb-2">U</label>
-                <select value={calcTo} onChange={(e) => setCalcTo(e.target.value)} className="w-full px-4 py-4 bg-[#0a0a0f] border border-white/10 rounded-xl focus:border-[#2d9cdb] focus:outline-none transition-all text-lg">
+                <label className={`block text-sm ${styles.textSecondary} mb-2`}>U</label>
+                <select value={calcTo} onChange={(e) => setCalcTo(e.target.value)} className={`w-full px-4 py-4 ${styles.inputBg} border ${styles.inputBorder} rounded-xl focus:border-[#2d9cdb] focus:outline-none transition-all text-lg ${styles.text}`}>
                   <option value="EUR">EUR</option>
                   <option value="RSD">RSD</option>
                   {rates.filter(r => r.currency !== 'EUR').map(r => <option key={r.currency} value={r.currency}>{r.currency}</option>)}
@@ -369,8 +432,8 @@ export default function HomePage() {
                 <button onClick={() => { const temp = calcFrom; setCalcFrom(calcTo); setCalcTo(temp); }} className="w-full py-4 bg-[#2d9cdb]/20 hover:bg-[#2d9cdb]/30 rounded-xl transition-all duration-300 border border-[#2d9cdb]/30 hover:border-[#2d9cdb] flex items-center justify-center gap-2 text-[#2d9cdb]"><ArrowRightLeft className="h-5 w-5" />Zameni</button>
               </div>
             </div>
-            <div className="mt-6 pt-6 border-t border-white/10 flex justify-between items-center">
-              <span className="text-gray-400">Rezultat:</span>
+            <div className={`mt-6 pt-6 border-t ${styles.border} flex justify-between items-center`}>
+              <span className={styles.textMuted}>Rezultat:</span>
               <span className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2d9cdb] to-[#5bb8e8]">{calcResult} {calcTo}</span>
             </div>
           </div>
@@ -383,13 +446,13 @@ export default function HomePage() {
           {/* Mobile */}
           <div className="lg:hidden">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-2"><span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Kursna lista</span></h2>
-              <p className="text-gray-500 text-sm">Marža: {config.kursevi.marzaKupovni}% / {config.kursevi.marzaProdajni}%</p>
+              <h2 className="text-3xl font-bold mb-2"><span className={`text-transparent bg-clip-text bg-gradient-to-r ${styles.gradientFrom} ${styles.gradientTo}`}>Kursna lista</span></h2>
+              <p className={`${styles.textSecondary} text-sm`}>Marža: {config.kursevi.marzaKupovni}% / {config.kursevi.marzaProdajni}%</p>
             </div>
             {loading ? (
               <div className="flex justify-center py-8"><div className="w-10 h-10 border-2 border-[#2d9cdb] border-t-transparent rounded-full animate-spin"></div></div>
             ) : (
-              <div className="max-w-md mx-auto bg-[#15151f] rounded-2xl p-4 border border-white/5">
+              <div className={`max-w-md mx-auto ${styles.bgCard} rounded-2xl p-4 border ${styles.border}`}>
                 <RatesTable />
               </div>
             )}
@@ -399,12 +462,12 @@ export default function HomePage() {
           <div className="hidden lg:grid lg:grid-cols-2 gap-8">
             {/* Kursna lista */}
             <div className="flex flex-col">
-              <h2 className="text-3xl font-bold mb-2"><span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Kursna lista</span></h2>
-              <p className="text-gray-500 mb-6 text-sm">Marža: {config.kursevi.marzaKupovni}% / {config.kursevi.marzaProdajni}%</p>
+              <h2 className="text-3xl font-bold mb-2"><span className={`text-transparent bg-clip-text bg-gradient-to-r ${styles.gradientFrom} ${styles.gradientTo}`}>Kursna lista</span></h2>
+              <p className={`${styles.textSecondary} mb-6 text-sm`}>Marža: {config.kursevi.marzaKupovni}% / {config.kursevi.marzaProdajni}%</p>
               {loading ? (
-                <div className="flex justify-center py-8 flex-1 bg-[#15151f] rounded-2xl border border-white/5"><div className="w-10 h-10 border-2 border-[#2d9cdb] border-t-transparent rounded-full animate-spin"></div></div>
+                <div className={`flex justify-center py-8 flex-1 ${styles.bgCard} rounded-2xl border ${styles.border}`}><div className="w-10 h-10 border-2 border-[#2d9cdb] border-t-transparent rounded-full animate-spin"></div></div>
               ) : (
-                <div className="bg-[#15151f] rounded-2xl p-6 border border-white/5 flex-1 overflow-auto" style={{ maxHeight: '420px' }}>
+                <div className={`${styles.bgCard} rounded-2xl p-6 border ${styles.border} flex-1 overflow-auto`} style={{ maxHeight: '420px' }}>
                   <RatesTable />
                 </div>
               )}
@@ -414,8 +477,8 @@ export default function HomePage() {
             {config.goldWidget.enabled && (
               <div id="zlato" className="flex flex-col">
                 <h2 className="text-3xl font-bold mb-2"><span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500">{config.goldWidget.title}</span></h2>
-                <p className="text-gray-500 mb-6 text-sm">Cena zlata u realnom vremenu</p>
-                <div className="bg-[#15151f] rounded-2xl p-4 border border-white/5 flex-1 flex items-center justify-center" style={{ minHeight: '420px' }}>
+                <p className={`${styles.textSecondary} mb-6 text-sm`}>Cena zlata u realnom vremenu</p>
+                <div className={`${styles.bgCard} rounded-2xl p-4 border ${styles.border} flex-1 flex items-center justify-center`} style={{ minHeight: '420px' }}>
                   <div id="zlato-widget-frame" className="w-full h-full"></div>
                 </div>
               </div>
@@ -429,7 +492,7 @@ export default function HomePage() {
         <section className="py-8 px-4 lg:hidden">
           <div className="max-w-md mx-auto">
             <h2 className="text-2xl font-bold mb-4 text-center"><span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500">{config.goldWidget.title}</span></h2>
-            <div className="bg-[#15151f] rounded-2xl p-4 border border-white/5">
+            <div className={`${styles.bgCard} rounded-2xl p-4 border ${styles.border}`}>
               <div id="zlato-widget-frame-mobile" style={{ width: '100%' }}></div>
             </div>
           </div>
@@ -437,16 +500,16 @@ export default function HomePage() {
       )}
 
       {/* USLUGE - Slider sa swipe efektom */}
-      <section className="py-16 sm:py-20 px-4 bg-[#0f0f15]">
+      <section className={`py-16 sm:py-20 px-4 ${styles.bgSecondary}`}>
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center"><span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Naše usluge</span></h2>
+          <h2 className="text-3xl font-bold mb-8 text-center"><span className={`text-transparent bg-clip-text bg-gradient-to-r ${styles.gradientFrom} ${styles.gradientTo}`}>Naše usluge</span></h2>
           
           <div className="relative">
             {/* Slider Controls */}
-            <button onClick={prevSlide} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-[#15151f] border border-white/10 rounded-full flex items-center justify-center hover:border-[#2d9cdb]/50 transition-all hover:scale-110">
+            <button onClick={prevSlide} className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 ${styles.bgCard} border ${styles.border} rounded-full flex items-center justify-center hover:border-[#2d9cdb]/50 transition-all hover:scale-110`}>
               <ChevronLeft className="h-6 w-6 text-[#2d9cdb]" />
             </button>
-            <button onClick={nextSlide} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-[#15151f] border border-white/10 rounded-full flex items-center justify-center hover:border-[#2d9cdb]/50 transition-all hover:scale-110">
+            <button onClick={nextSlide} className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 ${styles.bgCard} border ${styles.border} rounded-full flex items-center justify-center hover:border-[#2d9cdb]/50 transition-all hover:scale-110`}>
               <ChevronRight className="h-6 w-6 text-[#2d9cdb]" />
             </button>
 
