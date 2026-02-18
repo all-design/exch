@@ -255,7 +255,7 @@ export default function HomePage() {
       const container = document.getElementById(containerId);
       if (!container || container.querySelector('iframe')) return;
       const iframe = document.createElement('iframe');
-      iframe.src = `https://zlato.ai/widget/v4?theme=light&ref=menjacnica`;
+      iframe.src = `https://zlato.ai/widget/v4?theme=dark&ref=menjacnica`;
       iframe.style.cssText = 'border:0; width:100%; height:100%; min-height:360px;';
       iframe.loading = 'lazy';
       iframe.title = 'Zlato.ai - Cena zlata';
