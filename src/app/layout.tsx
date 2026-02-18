@@ -20,8 +20,17 @@ export const metadata: Metadata = {
   keywords: "menjačnica, kursna lista, promena novca, Beograd, evro, dolar, kurs, menjačnica Beograd",
   authors: [{ name: "Menjačnica Panter" }],
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { rel: "mask-icon", url: "/logo.svg", color: "#2d9cdb" },
+    ],
   },
   manifest: "/site.webmanifest",
   openGraph: {
