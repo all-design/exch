@@ -149,6 +149,7 @@ export default function HomePage() {
   const [calcFrom, setCalcFrom] = useState<string>('EUR');
   const [calcTo, setCalcTo] = useState<string>('RSD');
   const [calcResult, setCalcResult] = useState<string>('0');
+  const [rateDate, setRateDate] = useState<string>('');
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Animacija teksta
@@ -219,6 +220,11 @@ export default function HomePage() {
           };
         });
         setRates(ratesData);
+        
+        // Sačuvaj datum iz NBS odgovora
+        if (data.date) {
+          setRateDate(data.date);
+        }
       } catch (error) {
         setRates([
           { currency: 'EUR', srednji: 117.5, kupovni: 117.5, prodajni: 117.5 },
@@ -471,7 +477,7 @@ export default function HomePage() {
               <h2 className="text-3xl font-bold mb-3 tracking-tight">
                 <span className={`text-transparent bg-clip-text bg-gradient-to-r ${styles.gradientFrom} ${styles.gradientTo}`}>Kursna lista</span>
               </h2>
-              <p className={`${styles.textSecondary} text-sm font-medium`}>Marža: {config.kursevi.marzaKupovni}% / {config.kursevi.marzaProdajni}%</p>
+              <p className={`${styles.textSecondary} text-sm font-medium`}>Za današnji dan: {rateDate ? new Date(rateDate).toLocaleDateString('sr-RS', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '...'}</p>
             </div>
             {loading ? (
               <div className="flex justify-center py-12">
@@ -490,7 +496,7 @@ export default function HomePage() {
               <h2 className="text-3xl font-bold mb-3 tracking-tight">
                 <span className={`text-transparent bg-clip-text bg-gradient-to-r ${styles.gradientFrom} ${styles.gradientTo}`}>Kursna lista</span>
               </h2>
-              <p className={`${styles.textSecondary} mb-8 text-sm font-medium`}>Marža: {config.kursevi.marzaKupovni}% / {config.kursevi.marzaProdajni}%</p>
+              <p className={`${styles.textSecondary} mb-8 text-sm font-medium`}>Za današnji dan: {rateDate ? new Date(rateDate).toLocaleDateString('sr-RS', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '...'}</p>
               {loading ? (
                 <div className={`flex justify-center py-12 flex-1 ${styles.bgCard} rounded-2xl border ${styles.border}`}><div className="w-10 h-10 border-2 border-[#2d9cdb] border-t-transparent rounded-full animate-spin"></div></div>
               ) : (
