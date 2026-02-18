@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menjacnica>
+  <!-- Osnovni podaci o menjačnici -->
+  <info>
+    <naziv>Menjačnica Panter</naziv>
+    <slogan>Promena na bolje</slogan>
+    <logo>/logo.png</logo>
+    
+    <!-- Licenca NBS -->
+    <licenca>
+      <broj>MEN-001-2024</broj>
+      <izdavalac>Narodna banka Srbije</izdavalac>
+      <datumIzdavanja>2024-01-15</datumIzdavanja>
+      <link>https://www.nbs.rs</link>
+    </licenca>
+    
+    <!-- Društvene mreže -->
+    <social>
+      <facebook>https://www.facebook.com/menjacnicapanter</facebook>
+      <instagram>https://www.instagram.com/menjacnicapanter</instagram>
+      <linkedin></linkedin>
+    </social>
+    
+    <!-- SEO podaci -->
+    <seo>
+      <title>Menjačnica Panter | Kursna Lista Beograd - Najpovoljniji Kurs</title>
+      <description>Menjačnica Panter - ovlašćena menjačnica NBS sa najpovoljnijim kursevima u Beogradu. Proverite live kursnu listu za EUR, USD, GBP, CHF.</description>
+      <keywords>menjačnica, kursna lista, kurs evra, menjacnica beograd, EUR, USD</keywords>
+    </seo>
+  </info>
+
+  <!-- Kontakt podaci -->
+  <kontakt>
+    <telefon>
+      <glavni>+381 11 234 4444</glavni>
+      <mobilni>+381 63 273 603</mobilni>
+      <whatsapp>+381 63 273 603</whatsapp>
+    </telefon>
+    <email>info@menjacnica-panter.co.rs</email>
+    <web>https://menjacnica-panter.co.rs</web>
+  </kontakt>
+
+  <!-- Radno vreme -->
+  <radnoVreme>
+    <radniDani>
+      <dani>Pon-Pet</dani>
+      <vreme>08:00 - 20:00</vreme>
+    </radniDani>
+    <subota>
+      <vreme>09:00 - 15:00</vreme>
+    </subota>
+    <nedelja>
+      <zatvoreno>true</zatvoreno>
+    </nedelja>
+  </radnoVreme>
+
+  <!-- Lokacije menjačnica -->
+  <lokacije>
+    <lokacija id="1">
+      <naziv>PANTER I</naziv>
+      <adresa>Bulevar Kralja Aleksandra 122</adresa>
+      <grad>Beograd</grad>
+      <opstina>Vračar</opstina>
+      <postanskiBroj>11000</postanskiBroj>
+      <koordinate>
+        <lat>44.8065</lat>
+        <lng>20.4661</lng>
+      </koordinate>
+      <telefon>+381 11 234 4441</telefon>
+      <radnoVreme>
+        <ponPet>08:00 - 20:00</ponPet>
+        <subota>09:00 - 15:00</subota>
+        <nedelja>zatvoreno</nedelja>
+      </radnoVreme>
+      <usluge>
+        <usluga>menjacnica</usluga>
+        <usluga>western-union</usluga>
+        <usluga>ria</usluga>
+        <usluga>placanje-racuna</usluga>
+      </usluge>
+    </lokacija>
+    
+    <lokacija id="2">
+      <naziv>PANTER II</naziv>
+      <adresa>Bulevar Kralja Aleksandra 356</adresa>
+      <grad>Beograd</grad>
+      <opstina>Vračar</opstina>
+      <postanskiBroj>11000</postanskiBroj>
+      <koordinate>
+        <lat>44.7985</lat>
+        <lng>20.4811</lng>
+      </koordinate>
+      <telefon>+381 11 234 4442</telefon>
+      <radnoVreme>
+        <ponPet>08:00 - 20:00</ponPet>
+        <subota>09:00 - 15:00</subota>
+        <nedelja>zatvoreno</nedelja>
+      </radnoVreme>
+      <usluge>
+        <usluga>menjacnica</usluga>
+        <usluga>western-union</usluga>
+        <usluga>ria</usluga>
+      </usluge>
+    </lokacija>
+    
+    <lokacija id="3">
+      <naziv>PANTER III</naziv>
+      <adresa>Bulevar Kralja Aleksandra 24</adresa>
+      <grad>Beograd</grad>
+      <opstina>Palilula</opstina>
+      <postanskiBroj>11000</postanskiBroj>
+      <koordinate>
+        <lat>44.8101</lat>
+        <lng>20.4591</lng>
+      </koordinate>
+      <telefon>+381 11 234 4443</telefon>
+      <radnoVreme>
+        <ponPet>08:00 - 20:00</ponPet>
+        <subota>09:00 - 15:00</subota>
+        <nedelja>zatvoreno</nedelja>
+      </radnoVreme>
+      <usluge>
+        <usluga>menjacnica</usluga>
+        <usluga>western-union</usluga>
+      </usluge>
+    </lokacija>
+    
+    <lokacija id="4">
+      <naziv>PANTER IV</naziv>
+      <adresa>Zmaj Jovina 23</adresa>
+      <grad>Beograd</grad>
+      <opstina>Stari Grad</opstina>
+      <postanskiBroj>11000</postanskiBroj>
+      <koordinate>
+        <lat>44.8176</lat>
+        <lng>20.4569</lng>
+      </koordinate>
+      <telefon>+381 11 234 4444</telefon>
+      <radnoVreme>
+        <ponPet>09:00 - 19:00</ponPet>
+        <subota>10:00 - 14:00</subota>
+        <nedelja>zatvoreno</nedelja>
+      </radnoVreme>
+      <usluge>
+        <usluga>menjacnica</usluga>
+        <usluga>placanje-racuna</usluga>
+      </usluge>
+    </lokacija>
+  </lokacije>
+
+  <!-- Usluge -->
+  <usluge>
+    <usluga id="menjacnica">
+      <naziv>Menjačnica</naziv>
+      <opis>Kupovina i prodaja deviza po najpovoljnijim kursevima u gradu. Veliki izbor valuta.</opis>
+      <ikona>Globe</ikona>
+      <aktivan>true</aktivan>
+    </usluga>
+    
+    <usluga id="western-union">
+      <naziv>Western Union</naziv>
+      <opis>Brz i siguran prenos novca širom sveta preko Western Union mreže.</opis>
+      <ikona>Send</ikona>
+      <aktivan>true</aktivan>
+    </usluga>
+    
+    <usluga id="ria">
+      <naziv>RIA Money Transfer</naziv>
+      <opis>Prenos novca u više od 165 zemalja po povoljnim provizijama.</opis>
+      <ikona>Send</ikona>
+      <aktivan>true</aktivan>
+    </usluga>
+    
+    <usluga id="placanje-racuna">
+      <naziv>Plaćanje računa</naziv>
+      <opis>Uplata računa za komunalije, telefon, internet i druge usluge na jednom mestu.</opis>
+      <ikona>Receipt</ikona>
+      <aktivan>true</aktivan>
+    </usluga>
+    
+    <usluga id="investiciono-zlato">
+      <naziv>Investiciono zlato</naziv>
+      <opis>Prodaja i otkup investicionog zlata. Sigurna investicija za vaš kapital.</opis>
+      <ikona>TrendingUp</ikona>
+      <aktivan>true</aktivan>
+    </usluga>
+  </usluge>
+
+  <!-- Recenzije / Google Reviews -->
+  <recenzije>
+    <recenzija id="1">
+      <autor>Marko Petrović</autor>
+      <tekst>Odličan kurs i ljubazno osoblje. Uvek tu da pomognu!</tekst>
+      <ocena>5</ocena>
+      <datum>2026-02-14</datum>
+    </recenzija>
+    
+    <recenzija id="2">
+      <autor>Ana Jovanović</autor>
+      <tekst>Najbolji kurs u gradu! Brza usluga i bez redova.</tekst>
+      <ocena>5</ocena>
+      <datum>2026-02-11</datum>
+    </recenzija>
+    
+    <recenzija id="3">
+      <autor>Nikola Đorđević</autor>
+      <tekst>Profesionalni i pouzdani. Godinama ih koristim!</tekst>
+      <ocena>5</ocena>
+      <datum>2026-02-09</datum>
+    </recenzija>
+  </recenzije>
+
+  <!-- Marže za kursnu listu -->
+  <kursnaLista>
+    <marzaKupovni>0.5</marzaKupovni> <!-- % ispod srednjeg -->
+    <marzaProdajni>0.5</marzaProdajni> <!-- % iznad srednjeg -->
+    <cacheMinuta>5</cacheMinuta> <!-- Koliko često osvežavati -->
+    <apiIzvor>exchangerate-api</apiIzvor>
+  </kursnaLista>
+
+  <!-- Widget podešavanja -->
+  <widgeti>
+    <zlatoWidget>
+      <aktivan>true</aktivan>
+      <refId>menjacnica-panter</refId>
+      <tema>dark</tema>
+    </zlatoWidget>
+  </widgeti>
+
+  <!-- Footer podaci -->
+  <footer>
+    <copyright>© 2026 Menjačnica Panter. Sva prava zadržana.</copyright>
+    <godinaOsnivanja>2008</godinaOsnivanja>
+  </footer>
+</menjacnica>
